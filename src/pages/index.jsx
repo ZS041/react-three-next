@@ -5,22 +5,22 @@ import Instructions from '@/components/dom/Instructions'
 // WARNING ! errors might get obfuscated by using dynamic import.
 // If something goes wrong go back to a static import to show the error.
 // https://github.com/pmndrs/react-three-next/issues/49
-const Logo = dynamic(() => import('@/components/canvas/Logo'), { ssr: false })
+const Clone = dynamic(() => import('@/components/canvas/Clone'), { ssr: false })
 
 // Dom components go here
 export default function Page(props) {
   return (
-    <Instructions>
-      This is a minimal starter for Nextjs + React-three-fiber and Threejs. Click on the{' '}
-      <span className='text-cyan-200'>atoms nucleus</span> to navigate to the{' '}
-      <span className='text-green-200'>/blob</span> page. OrbitControls are enabled by default.
-    </Instructions>
+    <div className='absolute inset-x-0 bottom-20 flex flex-col items-center justify-end'>
+      <button className='flex flex-col items-center justify-center rounded-full border-2 border-[#FF6027]  py-4 px-8 text-3xl font-medium'>
+        Start Your Journey
+      </button>
+    </div>
   )
 }
 
 // Canvas components go here
 // It will receive same props as the Page component (from getStaticProps, etc.)
-Page.canvas = (props) => <Logo scale={0.5} route='/blob' position-y={-1} />
+Page.canvas = (props) => <Clone position-y={-1.5} rotation-x={1} />
 
 export async function getStaticProps() {
   return { props: { title: 'Index' } }
